@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 396817271407247921}
   - component: {fileID: 134562854049325409}
   - component: {fileID: -2542451072897050984}
+  - component: {fileID: 679419206424285046}
+  - component: {fileID: 8407855047010067266}
+  - component: {fileID: 4596227956016412809}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -47,6 +50,9 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: -2542451072897050984}
+  - {fileID: 679419206424285046}
+  - {fileID: 8407855047010067266}
+  - {fileID: 4596227956016412809}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 0
   _editorReflectionBakingCoverageMode: 0
@@ -71,5 +77,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3754520e6230453facfc89e7d07681a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &679419206424285046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5602290781732337646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45129d8f809c48a3908abe14d2b130ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8407855047010067266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5602290781732337646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecca31e45508467c96b1d5ba8abb1c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4596227956016412809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5602290781732337646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ad0e12c6d64529bb0d0230c85fcfcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
