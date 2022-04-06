@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Sdk.CodeBase.ResourcesManagement;
+using Sdk.CodeBase.UI;
 using UnityEngine;
 
 namespace Sdk.CodeBase.SdkStateMachine.States
@@ -8,16 +9,24 @@ namespace Sdk.CodeBase.SdkStateMachine.States
     public class BootstrapState : IBootstrapState
     {
         private readonly ILoadingOperation[] _loadingOperations;
+        private readonly IStateMachine _stateMachine;
+        private readonly IScreenServiceInitializer _screenServiceInitializer;
 
-        public BootstrapState(ILoadingOperation [] loadingOperations)
+        public BootstrapState(ILoadingOperation [] loadingOperations,
+            IStateMachine stateMachine,
+            IScreenServiceInitializer screenServiceInitializer)
         {
             _loadingOperations = loadingOperations;
+            _stateMachine = stateMachine;
+            _screenServiceInitializer = screenServiceInitializer;
         }
         
         public async void Enter()
         {
-            Debug.Log("enter bootstrap");
             await LoadResources();
+            _screenServiceInitializer.Initialize();
+            
+            _stateMachine.Enter<PlayModeState>();
         }
 
         public void Exit() { }

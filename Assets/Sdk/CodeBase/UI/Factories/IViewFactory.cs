@@ -3,6 +3,6 @@ namespace Sdk.CodeBase.UI.Factories
     public interface IViewFactory : IFactory
     {
         void SetViews(BaseView[] views);
-        BaseView CreateView(ViewType viewType);
+        TView CreateView<TView>(ViewType viewType) where TView : BaseView;
     }
 }

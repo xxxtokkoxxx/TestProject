@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using Sdk.CodeBase.Utilities;
 
 namespace Sdk.CodeBase.UI.Factories
 {
@@ -6,21 +8,30 @@ namespace Sdk.CodeBase.UI.Factories
     {
         private BaseView[] _views;
         
+        private readonly ISpawnPointProvider _spawnPointProvider;
+
+        public ViewFactory(ISpawnPointProvider spawnPointProvider)
+        {
+            _spawnPointProvider = spawnPointProvider;
+        }
+        
         public void SetViews(BaseView[] views)
         {
             _views = views;
         }
-        
-        public BaseView CreateView(ViewType viewType)
+
+        public TView CreateView<TView>(ViewType viewType) where TView : BaseView
         {
             var view = _views.FirstOrDefault(a => a.ViewType == viewType);
 
             if (view == null)
             {
-                return null;
+                throw new NullReferenceException("There is no appropriate view");
             }
 
-            return view;
+            var viewObject = Create(view, _spawnPointProvider.UiSpawnPoint);
+            
+            return viewObject.GetComponent<TView>();
         }
     }
 }
