@@ -6,19 +6,19 @@ namespace Sdk.CodeBase
     public class BaseFactory
     {
         protected TObject Create<TObject>(TObject gameObject, Transform parent)
-            where TObject : MonoBehaviour
+            where TObject : Behaviour
         {
             return Object.Instantiate(gameObject, parent);
         }
         
         protected TObject Create<TObject>(TObject gameObject)
-            where TObject : MonoBehaviour
+            where TObject : Behaviour
         {
             return Object.Instantiate(gameObject);
         }
         
         protected TObject Create<TObject>(TObject gameObject, Vector3 position, Quaternion rotation, Transform parent)
-            where TObject : MonoBehaviour
+            where TObject : Behaviour
         {
             return Object.Instantiate(gameObject, position, rotation, parent);
         }
@@ -26,7 +26,7 @@ namespace Sdk.CodeBase
         protected TObject CreateWithDependencyInjection<TObject>(DiContainer container,
             TObject gameObject,
             Transform parent) 
-            where TObject : MonoBehaviour
+            where TObject : Behaviour
         {
             return container.InstantiatePrefab(gameObject, parent).GetComponent<TObject>();
         }
@@ -36,7 +36,7 @@ namespace Sdk.CodeBase
             Vector3 position, 
             Quaternion rotation, 
             Transform parent) 
-            where TObject : MonoBehaviour
+            where TObject : Behaviour
         {
             return container.InstantiatePrefab(gameObject, position, rotation, parent).GetComponent<TObject>();
         }
