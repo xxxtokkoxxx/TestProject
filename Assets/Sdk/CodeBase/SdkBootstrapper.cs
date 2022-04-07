@@ -1,7 +1,10 @@
 ﻿using System;
+using Newtonsoft.Json;
+using Sdk.CodeBase.Data.RunTime;
 using Sdk.CodeBase.Network;
 using Sdk.CodeBase.SdkStateMachine;
 using Sdk.CodeBase.SdkStateMachine.States;
+using Sdk.Extensions;
 using UnityEngine;
 using Zenject;
 
@@ -35,12 +38,9 @@ namespace Sdk.CodeBase
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                var json = new TestJson();
-                
-                json.Name = "aasd";
-                json.Wings = "wings";
-                
-                var jsonString = JsonUtility.ToJson(json);
+                var json = new PurchaseData();
+                var jsonString = JsonConvert.SerializeObject(json);
+
                 Debug.Log(jsonString);
                 StartCoroutine(_networkService.PostRequest(ApiCredentials.MainUrl + ApiCredentials.PurchaseUrl, jsonString, ReturnedData));
             }
@@ -48,14 +48,8 @@ namespace Sdk.CodeBase
 
         private void ReturnedData(string s)
         {
-            Debug.Log(s);
-        }
-
-        [Serializable]
-        public class TestJson
-        {
-            public string Name;
-            public string Wings;
+            var jsonString = s.GetModifiedJson("PurchaseInfo");
+            var json = JsonConvert.DeserializeObject<PurchaseData>(jsonString);
         }
     }
 }
