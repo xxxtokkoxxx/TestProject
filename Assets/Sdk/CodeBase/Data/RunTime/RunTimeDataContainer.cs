@@ -4,5 +4,6 @@
     {
         public Vast Vast { get; set; }
         public PurchaseData PurchaseData { get; set; }
+        public PurchaseInfoDto PurchaseInfoDto { get; set; }
     }
 }

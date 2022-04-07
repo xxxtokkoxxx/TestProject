@@ -13,8 +13,8 @@ namespace Sdk.CodeBase
     public class SdkBootstrapper : MonoBehaviour
     {
         private IStateMachine _stateMachine;
-        private IStateMachineInitializer _stateMachineInitializer;
         private INetworkService _networkService;
+        private IStateMachineInitializer _stateMachineInitializer;
 
         [Inject]
         public void Construct(IStateMachineInitializer stateMachineInitializer,
@@ -41,7 +41,6 @@ namespace Sdk.CodeBase
                 var json = new PurchaseData();
                 var jsonString = JsonConvert.SerializeObject(json);
 
-                Debug.Log(jsonString);
                 StartCoroutine(_networkService.PostRequest(ApiCredentials.MainUrl + ApiCredentials.PurchaseUrl, jsonString, ReturnedData));
             }
         }
@@ -50,6 +49,7 @@ namespace Sdk.CodeBase
         {
             var jsonString = s.GetModifiedJson("PurchaseInfo");
             var json = JsonConvert.DeserializeObject<PurchaseData>(jsonString);
+            Debug.Log(jsonString);
         }
     }
 }

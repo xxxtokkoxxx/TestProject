@@ -22,20 +22,41 @@ namespace Sdk.CodeBase.Network
 
             returnedData?.Invoke(www.downloadHandler.data);
         }
+        
+        public IEnumerator GetRequest(string url, Action<Texture> returnedData = null)
+        {
+            var www = UnityWebRequestTexture.GetTexture(url);
+
+            yield return www.SendWebRequest();
+
+            if (www.isHttpError || www.isNetworkError)
+            {
+                Debug.LogError(www.error);
+                yield break;
+            }
+
+            returnedData?.Invoke(DownloadHandlerTexture.GetContent(www));
+        }
 
         public IEnumerator PostRequest(string url, string body, Action<string> returnedData = null)
         {
-            var request = new UnityWebRequest(url, UnityWebRequest.kHttpVerbPOST);
+            var www = new UnityWebRequest(url, UnityWebRequest.kHttpVerbPOST);
             byte[] bodyRaw = Encoding.UTF8.GetBytes(body);
             
-            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
-            request.downloadHandler = new DownloadHandlerBuffer();
+            www.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            www.downloadHandler = new DownloadHandlerBuffer();
             
-            request.SetRequestHeader("Content-Type", "application/json");
+            www.SetRequestHeader("Content-Type", "application/json");
             
-            yield return request.SendWebRequest();
+            yield return www.SendWebRequest();
 
-            returnedData?.Invoke(request.downloadHandler.text);
+            if (www.isHttpError || www.isNetworkError)
+            {
+                Debug.LogError(www.error);
+                yield break;
+            }
+            
+            returnedData?.Invoke(www.downloadHandler.text);
         }
     }
 }
