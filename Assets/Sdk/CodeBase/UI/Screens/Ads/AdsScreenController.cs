@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.IO;
 using System.Text;
@@ -9,8 +8,6 @@ using Sdk.CodeBase.SdkCore.Advertisements;
 using Sdk.CodeBase.SdkCore.SdkDataWriter;
 using Sdk.CodeBase.UI.Factories;
 using Sdk.CodeBase.Utilities;
-using UnityEngine;
-using UnityEngine.Video;
 using Object = UnityEngine.Object;
 
 namespace Sdk.CodeBase.UI.Screens.Ads

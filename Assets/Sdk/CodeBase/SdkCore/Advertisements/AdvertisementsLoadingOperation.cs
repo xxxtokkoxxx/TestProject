@@ -3,7 +3,6 @@ using Sdk.CodeBase.Constants;
 using Sdk.CodeBase.ResourcesManagement;
 using Sdk.CodeBase.SdkCore.SdkDataWriter;
 using UnityEngine;
-using UnityEngine.Video;
 
 namespace Sdk.CodeBase.SdkCore.Advertisements
 {

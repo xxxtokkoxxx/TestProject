@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Linq;
 using Sdk.CodeBase.Utilities;
+using Zenject;
 
 namespace Sdk.CodeBase.UI.Factories
 {
     public class ViewFactory : BaseFactory, IViewFactory
     {
         private BaseView[] _views;
-        
+
+        private readonly DiContainer _container;
         private readonly ISpawnPointProvider _spawnPointProvider;
 
-        public ViewFactory(ISpawnPointProvider spawnPointProvider)
+        public ViewFactory(DiContainer container,
+            ISpawnPointProvider spawnPointProvider)
         {
+            _container = container;
             _spawnPointProvider = spawnPointProvider;
         }
         
@@ -29,7 +33,7 @@ namespace Sdk.CodeBase.UI.Factories
                 throw new NullReferenceException("There is no appropriate view");
             }
 
-            var viewObject = Create(view, _spawnPointProvider.UiSpawnPoint);
+            var viewObject = CreateWithDependencyInjection(_container, view, _spawnPointProvider.UiSpawnPoint);
             
             return viewObject.GetComponent<TView>();
         }
