@@ -303,26 +303,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2136087621939217371, guid: da0392d39ea2a8e47b29feb0a65748b4,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136087621939217371, guid: da0392d39ea2a8e47b29feb0a65748b4,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136087621939217371, guid: da0392d39ea2a8e47b29feb0a65748b4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136087621939217371, guid: da0392d39ea2a8e47b29feb0a65748b4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3844349707215818323, guid: da0392d39ea2a8e47b29feb0a65748b4,
         type: 3}
       propertyPath: m_Name
@@ -381,26 +361,6 @@ PrefabInstance:
     - target: {fileID: 5056465813878016231, guid: da0392d39ea2a8e47b29feb0a65748b4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5912593686758250786, guid: da0392d39ea2a8e47b29feb0a65748b4,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5912593686758250786, guid: da0392d39ea2a8e47b29feb0a65748b4,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5912593686758250786, guid: da0392d39ea2a8e47b29feb0a65748b4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5912593686758250786, guid: da0392d39ea2a8e47b29feb0a65748b4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

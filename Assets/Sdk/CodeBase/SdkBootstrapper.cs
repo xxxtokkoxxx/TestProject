@@ -1,10 +1,7 @@
-﻿using System;
-using Newtonsoft.Json;
-using Sdk.CodeBase.Data.RunTime;
-using Sdk.CodeBase.Network;
+﻿using Sdk.CodeBase.Network;
+using Sdk.CodeBase.SdkCore;
 using Sdk.CodeBase.SdkStateMachine;
 using Sdk.CodeBase.SdkStateMachine.States;
-using Sdk.Extensions;
 using UnityEngine;
 using Zenject;
 
@@ -38,18 +35,23 @@ namespace Sdk.CodeBase
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                var json = new PurchaseData();
-                var jsonString = JsonConvert.SerializeObject(json);
-
-                StartCoroutine(_networkService.PostRequest(ApiCredentials.MainUrl + ApiCredentials.PurchaseUrl, jsonString, ReturnedData));
+                SdkCore.Sdk.Instance.ShowVideoAdvertisement();
             }
-        }
-
-        private void ReturnedData(string s)
-        {
-            var jsonString = s.GetModifiedJson("PurchaseInfo");
-            var json = JsonConvert.DeserializeObject<PurchaseData>(jsonString);
-            Debug.Log(jsonString);
+            
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                SdkCore.Sdk.Instance.HideVideoAdvertisement();
+            }
+            
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                SdkCore.Sdk.Instance.ShowPurchase();
+            }
+            
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                SdkCore.Sdk.Instance.HidePurchase();
+            }
         }
     }
 }

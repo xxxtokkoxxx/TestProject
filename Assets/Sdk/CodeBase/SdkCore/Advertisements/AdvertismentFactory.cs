@@ -17,4 +17,10 @@ namespace Sdk.CodeBase.SdkCore.Advertisements
             return videoPlayer;
         }
     }
+
+    public interface IAdvertisementPreparer
+    {
+        void ShowVideoAdvertisement();
+        void HideVideoAdvertisement();
+    }
 }

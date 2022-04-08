@@ -1,6 +1,8 @@
 ﻿using Sdk.CodeBase.Data.RunTime;
+using Sdk.CodeBase.Messenger;
 using Sdk.CodeBase.Network;
 using Sdk.CodeBase.ResourcesManagement;
+using Sdk.CodeBase.SdkCore;
 using Sdk.CodeBase.SdkCore.Advertisements;
 using Sdk.CodeBase.SdkCore.SdkDataWriter;
 using Zenject;
@@ -16,6 +18,8 @@ namespace Sdk.CodeBase.Installers
             BindRunTimeData();
             BindMediaPlayerLoadingOperation();
             BindAdvertisementsFactory();
+            BindMessengerService();
+            BindAdsPreparer();
         }
 
         private void BindStateMachineInitializer()
@@ -50,6 +54,20 @@ namespace Sdk.CodeBase.Installers
         {
             Container.Bind(typeof(AdvertisementFactory), typeof(IAdvertisementsFactory))
                 .To<AdvertisementFactory>()
+                .AsSingle();
+        }
+
+        private void BindMessengerService()
+        {
+            Container.Bind(typeof(MessengerService), typeof(IMessengerService))
+                .To<MessengerService>()
+                .AsSingle();
+        }
+        
+        private void BindAdsPreparer()
+        {
+            Container.Bind(typeof(AdvertisementPreparer), typeof(IAdvertisementPreparer))
+                .To<AdvertisementPreparer>()
                 .AsSingle();
         }
     }
