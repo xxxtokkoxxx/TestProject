@@ -7,6 +7,7 @@ using SDK.Sdk.CodeBase.UI.Factories;
 using SDK.Sdk.CodeBase.Utilities;
 using SDK.Sdk.Extensions;
 using UnityEngine;
+using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 namespace SDK.Sdk.CodeBase.UI.Screens.Purchase
@@ -155,16 +156,18 @@ namespace SDK.Sdk.CodeBase.UI.Screens.Purchase
 
             _isCoroutineRan = true;
             _view.SetInfoTextEnabled(true, _successPurchaseText);
-            
+            SendUserCreditCardCredentialsData();
+
             yield return new WaitForSeconds(_coroutineDuration);
 
             ShowPurchaseButtonSubView();
+
             _isCoroutineRan = false;
         }
 
         private bool CheckIfInputFieldsNotEmpty()
         {
-            foreach (var field in _view.GetInputFields())
+            foreach (InputField field in _view.GetCardCredentials())
             {
                 if (string.IsNullOrEmpty(field.text))
                 {
@@ -175,6 +178,19 @@ namespace SDK.Sdk.CodeBase.UI.Screens.Purchase
             return true;
         }
 
+        private void SendUserCreditCardCredentialsData()
+        {
+            var email = _view.GetCardCredentials().Email.text;
+            var creditCard = _view.GetCardCredentials().CreditCard.text;
+            var expirationDate = _view.GetCardCredentials().ExpirationDate.text;
+            
+            var data = new UserData(email, creditCard, expirationDate);
+
+            var dataJson = JsonConvert.SerializeObject(data);
+            
+            _coroutineRunner.RunCoroutine((_networkService.PostRequest(ApiCredentials.MainUrl + ApiCredentials.UserCreditCard, dataJson)));
+        }
+
         private void ShowPurchaseButtonSubView()
         {
             _view.SetPurchaseInfoSubViewEnabled(false);
@@ -182,7 +198,7 @@ namespace SDK.Sdk.CodeBase.UI.Screens.Purchase
             
             _view.SetInfoTextEnabled(true, _purchaseInfoText);
 
-            foreach (var field in _view.GetInputFields())
+            foreach (InputField field in _view.GetCardCredentials())
             {
                 field.text = String.Empty;
             }

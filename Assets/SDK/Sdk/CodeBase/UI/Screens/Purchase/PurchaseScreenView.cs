@@ -54,7 +54,7 @@ namespace SDK.Sdk.CodeBase.UI.Screens.Purchase
             _callbacks.OnCloseButtonClick();
         }
 
-        public InputField[] GetInputFields() =>
-            _purchaseInfoSubView.InputFields;
+        public UserCreditCardCredentials GetCardCredentials() =>
+            _purchaseInfoSubView.Credentials;
     }
 }
