@@ -5,8 +5,8 @@ SDK for showing video advertisment and making purchases
 
 ## Development Environment
 
-Unity3D editor 2019.4.9;
-Target platform: PC (Windows)
+- Unity3D editor 2019.4.9;
+- Target platform: PC (Windows)
 
 ## Getting started
 
@@ -15,7 +15,7 @@ Target platform: PC (Windows)
 - open PurchaseSample or AdsSample scenes;
 - run Unity Editor;
 
-- if you want to test it in custom scene, add Assets/SDK/Sdk/Sdk.prefab to your scene 
+- if you want to test it in custom scene, add Assets/SDK/Sdk/Sdk.prefab to your scene;
 
 ## API
 Use SDK API through the singleton Assets/SDK/Sdk/CodeBase/SdkCore/Sdk.cs
