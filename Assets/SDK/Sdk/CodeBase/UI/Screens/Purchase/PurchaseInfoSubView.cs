@@ -13,11 +13,10 @@ namespace SDK.Sdk.CodeBase.UI.Screens.Purchase
         [SerializeField] private Text _currency;
         [SerializeField] private Text _currencySign;
         [SerializeField] private Text _infoText;
-        [SerializeField] private InputField[] _inputFields;
+        [SerializeField] private UserCreditCardCredentials _credentials;
 
         private INetworkService _networkService;
-        
-        public InputField[] InputFields => _inputFields;
+        public UserCreditCardCredentials Credentials => _credentials;
         public Text InfoText => _infoText;
 
         [Inject]
@@ -28,6 +27,7 @@ namespace SDK.Sdk.CodeBase.UI.Screens.Purchase
 
         public void Initialize(PurchaseInfoDto data)
         {
+            _credentials.Initialize();
             _title.text = data.Title;
             _currency.text = data.Currency;
             _currencySign.text = data.CurrencySign;

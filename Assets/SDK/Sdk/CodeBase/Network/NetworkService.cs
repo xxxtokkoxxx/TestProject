@@ -41,6 +41,7 @@ namespace SDK.Sdk.CodeBase.Network
         public IEnumerator PostRequest(string url, string body, Action<string> returnedData = null)
         {
             var www = new UnityWebRequest(url, UnityWebRequest.kHttpVerbPOST);
+
             byte[] bodyRaw = Encoding.UTF8.GetBytes(body);
             
             www.uploadHandler = new UploadHandlerRaw(bodyRaw);
