@@ -1,7 +1,3 @@
-using System.Collections;
-using System.IO;
-using System.Text;
-using System.Xml.Serialization;
 using Sdk.CodeBase.Messenger;
 using Sdk.CodeBase.SdkCore;
 using Sdk.CodeBase.SdkCore.Advertisements;

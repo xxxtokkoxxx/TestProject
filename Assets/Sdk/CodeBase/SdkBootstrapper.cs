@@ -55,7 +55,7 @@ namespace Sdk.CodeBase
                 _sdk.ShowPurchase();
             }
             
-            if (Input.GetKeyDown(KeyCode.Alpha3))
+            if (Input.GetKeyDown(KeyCode.Alpha4))
             {
                 _sdk.HidePurchase();
             }

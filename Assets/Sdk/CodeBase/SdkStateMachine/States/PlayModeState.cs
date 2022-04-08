@@ -13,7 +13,7 @@ namespace Sdk.CodeBase.SdkStateMachine.States
         
         public void Enter()
         {
-            _screenService.ShowScreen(ViewType.Purchase);
+            // _screenService.ShowScreen(ViewType.Purchase);
         }
 
         public void Exit()
