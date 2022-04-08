@@ -18,7 +18,6 @@ namespace Sdk.CodeBase.Installers
             BindRunTimeData();
             BindMediaPlayerLoadingOperation();
             BindAdvertisementsFactory();
-            BindSdk();
             BindMessengerService();
             BindAdsPreparer();
         }
@@ -58,13 +57,6 @@ namespace Sdk.CodeBase.Installers
                 .AsSingle();
         }
 
-        private void BindSdk()
-        {
-            Container.Bind(typeof(CodeBase.SdkCore.Sdk), typeof(ISdk))
-                .To<CodeBase.SdkCore.Sdk>()
-                .AsSingle();
-        }
-        
         private void BindMessengerService()
         {
             Container.Bind(typeof(MessengerService), typeof(IMessengerService))

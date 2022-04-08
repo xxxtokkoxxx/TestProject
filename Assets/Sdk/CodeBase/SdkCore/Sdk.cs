@@ -1,15 +1,18 @@
 ﻿using Sdk.CodeBase.SdkCore.Advertisements;
 using Sdk.CodeBase.UI;
+using Sdk.CodeBase.Utilities;
 using UnityEngine;
+using Zenject;
 
 namespace Sdk.CodeBase.SdkCore
 {
-    public class Sdk : ISdk
+    public class Sdk : Singleton<Sdk>
     {
-        private readonly IAdvertisementPreparer _adsPreparer;
-        private readonly IScreenService _screenService;
+        private IAdvertisementPreparer _adsPreparer;
+        private IScreenService _screenService;
 
-        public Sdk(IAdvertisementPreparer adsPreparer, 
+        [Inject]
+        public void Construct(IAdvertisementPreparer adsPreparer, 
             IScreenService screenService)
         {
             _adsPreparer = adsPreparer;

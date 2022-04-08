@@ -16,19 +16,16 @@ namespace Sdk.CodeBase.UI.Screens.Ads
 
         private readonly IViewFactory _viewFactory;
         private readonly IDataReadWriteService _dataReadWriteService;
-        private readonly ISdk _sdk;
         private readonly IMessengerService _messengerService;
 
         private IAdsViewCallbacks _callbacks;
 
         public AdsScreenController(IViewFactory viewFactory,
             IDataReadWriteService dataReadWriteService,
-            ISdk sdk,
             IMessengerService messengerService)
         {
             _viewFactory = viewFactory;
             _dataReadWriteService = dataReadWriteService;
-            _sdk = sdk;
             _messengerService = messengerService;
         }
 
@@ -99,12 +96,12 @@ namespace Sdk.CodeBase.UI.Screens.Ads
 
         private void OnShowVideoClicked()
         {
-            _sdk.ShowVideoAdvertisement();
+            SdkCore.Sdk.Instance.ShowVideoAdvertisement();
         }
 
         private void OnHideVideoClicked()
         {
-            _sdk.HideVideoAdvertisement();
+            SdkCore.Sdk.Instance.HideVideoAdvertisement();
         }
 
         private void SaveVideoFile(byte[] data)
